@@ -1,6 +1,5 @@
 package com.spring.restaurant.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.spring.restaurant.data.interfaces.IDAUsuario;
@@ -12,7 +11,6 @@ import de.mkammerer.argon2.Argon2Factory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 
 @RestController
 public class UsuarioController {
@@ -34,8 +32,7 @@ public class UsuarioController {
 
     private boolean validarToken(String token)
     {
-        String usuarioId= jwtUtil.getKey(token);
-        return usuarioId !=null;
+        return  jwtUtil.getKey(token) != null;
     }
 
     @PostMapping("api/usuarios")
@@ -46,11 +43,22 @@ public class UsuarioController {
         idaUsuario.register(usuario);
     }
 
-    @DeleteMapping("api/usuarios/{id}")
-    public void deleteUsuario(@RequestHeader(value = "Authorization") String token,@PathVariable Long id)
+    @DeleteMapping("api/usuarios/{idusuario}")
+    public void deleteUsuario(@RequestHeader(value = "Authorization") String token,
+                              @PathVariable Long idusuario)
     {
-        idaUsuario.delete(id); 
+        idaUsuario.delete(idusuario); 
     }
 
+    @RequestMapping(value="api/usuarios/{id}")
+    public Usuario getUsuariobyId(@PathVariable Long id){
+        return idaUsuario.getUsuariobyId(id);
+    }
+
+
+    public void updateUsuario(Usuario usuario)
+    {
+        
+    }
 
 }

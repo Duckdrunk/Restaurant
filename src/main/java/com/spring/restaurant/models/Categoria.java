@@ -1,5 +1,4 @@
 package com.spring.restaurant.models;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,33 +12,18 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name="usuarios")
+@Table(name="categorias")
 @ToString @EqualsAndHashCode
-public class Usuario {
-
+public class Categoria {
+    
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter @Column(name="idusuario")
-    public Long idusuario;
+    @Getter @Setter @Column(name="idcategoria")
+    private Long idcategoria;
 
     @Getter @Setter @Column(name="nombre")
-    public String nombre;
-
-    @Getter @Setter @Column(name="apellido")
-    public String apellido;
-
-    @Getter @Setter @Column(name="telefono")
-    public String telefono;
-
-    @Getter @Setter @Column(name="email")
-    public String email;
-    
-    @Getter @Setter @Column(name="password")
-    public String password;
-
-    public Usuario() {
-
-    }
+    private String nombre;
 
 
+    public Categoria(){}
 }

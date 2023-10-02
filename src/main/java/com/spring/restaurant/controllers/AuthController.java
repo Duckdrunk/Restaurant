@@ -24,7 +24,7 @@ public class AuthController {
         Usuario usuarioLogueado= idaUsuario.obtenerUsuarioCredenciales(usuario);
         if(usuarioLogueado!=null){
             //Token JWT
-            return jwtUtil.create(String.valueOf(usuarioLogueado.getId()), usuarioLogueado.getEmail());
+            return jwtUtil.create(String.valueOf(usuarioLogueado.getIdusuario()), usuarioLogueado.getEmail());
         }
         return "FAIL";
     }

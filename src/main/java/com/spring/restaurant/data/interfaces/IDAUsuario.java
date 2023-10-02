@@ -13,4 +13,6 @@ public interface IDAUsuario {
     void register(Usuario usuario);
 
     Usuario obtenerUsuarioCredenciales(Usuario usuario);
+
+    Usuario getUsuariobyId(Long id);
 }

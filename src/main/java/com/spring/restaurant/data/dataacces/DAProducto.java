@@ -30,7 +30,7 @@ public class DAProducto implements IDAProducto{
     @Override 
     public List<Producto> getProductobyCategoria(Long id)
     {
-        String query = "FROM Producto WHERE idcategoria= :id";
+        String query = "FROM Producto WHERE categoria.idcategoria= :id";
         return entityManager.createQuery(query, Producto.class)
                             .setParameter("id", id)
                             .getResultList();

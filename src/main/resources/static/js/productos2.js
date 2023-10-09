@@ -1,8 +1,8 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
     cargarProductos();
-    cargarCategorias();
-    $('#productos').DataTable();
+    //cargarCategorias();
+    //$('#productos').DataTable();
     
 });
   
@@ -16,13 +16,15 @@ async function cargarProductos()
     var btnagregar = '<a href=""><i class=""></a>';
     var listadoHtml='';
     for(let producto of productos ){
-        let productosHtml = '<tr><td>'+  producto.nombre + '</td><td>' +producto.descripcion 
-                            +'</td><td>' + producto.precio +'</td><td><img src="' +producto.imagen  
-                            +'"></td><td>' + producto.categoria.nombre +'</td></tr>';         
-  
+        let productosHtml = '<div class="container-food">'
+                            +'<img src="'+producto.imagen+'" alt="Comida">'
+                            +'<p class="nombre">'+producto.nombre+'</p>'
+                            +'<p class="precio"> S/ '+ (producto.precio).toFixed(2) +'</p>'
+                            +'<p class="descripcion">'+producto.descripcion+'</p>'
+                            +'</div>';
         listadoHtml += productosHtml;
     }
-    document.querySelector('#productos tbody').outerHTML = listadoHtml;
+    document.querySelector('body').outerHTML = listadoHtml;
 }
   
 function getHeaders(){

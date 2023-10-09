@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 import lombok.EqualsAndHashCode;
@@ -21,8 +23,9 @@ public class Producto
     @Getter @Setter @Column(name = "idproducto")
     private Long idproducto;
 
-    @Getter @Setter @Column(name = "idcategoria")
-    private Long idcategoria;
+    @ManyToOne @JoinColumn(name="idcategoria")
+    @Getter @Setter
+    private Categoria categoria;
 
     @Getter @Setter @Column(name = "nombre")
     private String nombre;
